@@ -1,6 +1,7 @@
 # Emotionin.ai – MCP Server (Open Source)
 
-Welcome to the **Emotionin.ai MCP Server** — an open-source foundational MCP (Model Context Protocol) server designed to give every Emotionin.ai user the ability to integrate **emotional profiles** into any LLM-driven chatbot or AI agent.  
+Welcome to the **Emotionin.ai MCP Server** — an open-source foundational MCP (Model Context Protocol) server designed to give every Emotionin.ai user the ability to integrate **emotional profiles** into any LLM-driven chatbot or AI agent.
+
 This repository provides a lightweight, extensible server that exposes:
 
 - A **user-specific Emotionin.ai emotional profile**
@@ -16,7 +17,7 @@ The goal: enable developers and creators to build **deeply personalized, emotion
 - **Emotionin.ai Profile Integration**  
   Fetch and use a customer-specific emotional profile from **https://emotionin.ai**.
 - **Custom Tool Extensibility**  
-  Add your own MCP tools to tailor the LLM’s emotional expression, personality traits, or domain-specific behavior.
+  Add your own MCP tools to tailor the LLM's emotional expression, personality traits, or domain-specific behavior.
 - **Dockerized Deployment**  
   Fully configured Docker container for local or cloud operation.
 - **Minimal Installation Requirements**  
@@ -28,36 +29,40 @@ The goal: enable developers and creators to build **deeply personalized, emotion
 
 ## 📌 Purpose of This Project
 
-Emotionin.ai provides emotional and personality profiling services.  
+Emotionin.ai provides emotional and personality profiling services.
+
 This MCP server acts as a **bridge** that exposes such a profile to any MCP-enabled LLM client (ChatGPT, open-source LLM frontends, custom agents, etc.).
 
 Developers can:
 
-- Build AI agents that **respond differently depending on the user’s emotional profile**
+- Build AI agents that **respond differently depending on the user's emotional profile**
 - Add custom logic, memory tools, context fetchers, API utilities, or domain-specific knowledge tools
-- Shape the agent’s **tone, style, empathy, and interaction patterns**
+- Shape the agent's **tone, style, empathy, and interaction patterns**
 - Create fully immersive, personalized experience layers powered by the Emotionin.ai ecosystem
 
 ---
 
+## 🏗️ Architecture Overview
+
+```
 ┌──────────────────────────┐
-│ Emotionin.ai Profile │ (external service: https://emotionin.ai
-)
+│ Emotionin.ai Profile    │ (external service: https://emotionin.ai)
 └───────────────┬──────────┘
-│
-Fetch emotional profile
-│
+                │
+                │ Fetch emotional profile
+                │
 ┌───────────────▼───────────┐
-│ MCP Server Core │ (This repository)
+│ MCP Server Core          │ (This repository)
 │ - Profile retrieval tool │
-│ - Extensible MCP handlers │
+│ - Extensible MCP handlers│
 └───────────────┬───────────┘
-│
-Custom Tools Added by Devs
-│
+                │
+                │ Custom Tools Added by Devs
+                │
 ┌───────────────▼────────────┐
-│ LLM / Chatbot Client │
+│ LLM / Chatbot Client      │
 └─────────────────────────────┘
+```
 
 ---
 
@@ -70,91 +75,104 @@ Custom Tools Added by Devs
 
 ---
 
-## 🚀 Quick Start (Docker)
+## 🚀 Quick Start
+
+### Docker (Recommended)
 
 This repository includes a preconfigured Dockerfile for fast setup.
 
 ```bash
 docker build -t emotionin-mcp-server .
 docker run -p 3000:3000 emotionin-mcp-server
+```
 
-git clone https://github.com/<your-repo>/emotionin-mcp-server.git
-cd emotionin-mcp-server
+### Manual Installation
+
+```bash
+git clone https://github.com/RegCoding/emotionsin_ai_mcp.git
+cd emotionsin_ai_mcp
 pip install -r requirements.txt
 python server.py
+```
 
 ---
 
-🧩 Adding Custom MCP Tools
+## 🧩 Adding Custom MCP Tools
 
 This MCP server is intentionally minimal, giving developers freedom to add tools such as:
 
-Personality modifiers
+- Personality modifiers
+- Domain knowledge injectors
+- User memory systems
+- Context APIs (calendar, CRM, IoT, etc.)
+- Emotional tone controllers
 
-Domain knowledge injectors
+Add your tools via the `/tools` directory or extend the server configuration.
 
-User memory systems
+### Example Structure
 
-Context APIs (calendar, CRM, IoT, etc.)
-
-Emotional tone controllers
-
-Add your tools via the /tools directory or extend the server configuration.
-
-Example structure:
-## 🏗️ Architecture Overview
-
+```
 tools/
   ├── emotion_profile.py
   ├── personality_modifier.py
   └── my_custom_tool.py
+```
 
 Each tool is automatically registered when the server starts.
 
-🔐 Emotionin.ai Service Attribution Requirement
+---
+
+## 🔐 Emotionin.ai Service Attribution Requirement
 
 This project is MIT-licensed (see below).
-If you use or distribute this MCP server, you must include attribution that it uses the Emotionin.ai emotional profile service (https://emotionin.ai
-).
 
-Example attribution:
+If you use or distribute this MCP server, you must include attribution that it uses the Emotionin.ai emotional profile service (https://emotionin.ai).
 
-“This custom MCP server uses an Emotionin.ai emotional profile (https://emotionin.ai).”
+**Example attribution:**
+
+> "This custom MCP server uses an Emotionin.ai emotional profile (https://emotionin.ai)."
 
 This is the only requirement beyond standard MIT terms.
 
-🤝 Contributing
+---
+
+## 🤝 Contributing
 
 Contributions are welcome!
 
-Fork the repository
+1. Fork the repository
+2. Create a feature branch
+3. Open a pull request
 
-Create a feature branch
+---
 
-Open a pull request
+## 🙋 Support
 
-🙋 Support
+- **For Emotionin.ai profile services or integration questions:**  
+  https://emotionin.ai
 
-For Emotionin.ai profile services or integration questions:
-https://emotionin.ai
+- **For issues with the MCP server code:**  
+  Open an issue in this repository.
 
-For issues with the MCP server code:
-Open an issue in this repository.
+---
 
-⭐ If you find this useful…
+## ⭐ If you find this useful…
 
 Give the repository a star — it helps others discover the project!
 
+---
+
+## 📄 License
+
+MIT License - See LICENSE file for details.
 
 ---
 
 If you want, I can also generate:
 
-- A downloadable `.md` file  
-- `CONTRIBUTING.md`  
-- A template `/tools` example  
-- A logo/banner for the repo  
+- A downloadable `.md` file
+- `CONTRIBUTING.md`
+- A template `/tools` example
+- A logo/banner for the repo
 
 Just tell me!
-
-
