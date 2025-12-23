@@ -25,7 +25,7 @@ except ImportError:
     exit(1)
 
 # Configuration
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "AIzaSyA1lz8KjXVt44E-I1CAqUFtDmajchxZxhw")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 MCP_SERVER_URL = "https://emotionsinai-mcp-server-572436270187.europe-west1.run.app/mcp"
 PROFILE_ID = os.getenv("EMOTIONSIN_PROFILE_ID", "4e1cabf6cfbd452b951d659897d16365")
 
@@ -279,4 +279,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
