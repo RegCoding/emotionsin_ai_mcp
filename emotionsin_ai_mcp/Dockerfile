@@ -5,10 +5,12 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-COPY requirements.txt .
+# Install dependencies
+COPY requirements.txt ./
 RUN pip install -U pip && pip install -r requirements.txt
 
-COPY . .
+# Copy the rest of the application code
+COPY . ./
 
 # Expose port (not required but good practice)
 EXPOSE 8080
