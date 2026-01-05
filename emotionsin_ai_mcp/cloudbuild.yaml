@@ -1,0 +1,11 @@
+steps:
+  # Step 1: Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'europe-west1-docker.pkg.dev/emotionsinai-mcp/emotionsinaimcp-repo/emotionsinai-mcp-server'
+      - '.'
+# Step 2: Push the container image to Artifact Registry
+images:
+  - 'europe-west1-docker.pkg.dev/emotionsinai-mcp/emotionsinaimcp-repo/emotionsinai-mcp-server'
